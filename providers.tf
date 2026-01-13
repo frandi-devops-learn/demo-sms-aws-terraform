@@ -8,7 +8,6 @@ terraform {
 }
 
 provider "aws" {
-  profile = "devops"
 }
 
 locals {

@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  list_vpc:
+  deploy_aws:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
