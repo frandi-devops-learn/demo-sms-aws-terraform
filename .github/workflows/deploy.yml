@@ -1,4 +1,4 @@
-name: List VPC
+name: AWS Infra Provision with Terraform
 
 on:
   push:
@@ -28,5 +28,5 @@ jobs:
       - name: Terraform Init
         run: terraform init
     
-      - naem: Terraform Plan
+      - name: Terraform Plan
         run: terraform plan
