@@ -87,3 +87,13 @@ variable "acm_name" {
   type        = string
   description = "ACM Name"
 }
+
+variable "alb_name" {
+  type        = string
+  description = "Application Loadbalancer Name"
+}
+
+variable "tg_name" {
+  type        = string
+  description = "ALB's target Group Name"
+}

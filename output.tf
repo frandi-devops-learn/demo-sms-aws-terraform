@@ -24,3 +24,13 @@ output "acm_dns_validation_records" {
     }
   }
 }
+
+output "certificate_status" {
+  description = "Current status of the ACM certificate"
+  value       = aws_acm_certificate.demo_cert.status
+}
+
+output "alb_dns_name" {
+  description = "The public DNS name of the Load Balancer"
+  value       = aws_lb.demo_alb.dns_name
+}

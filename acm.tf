@@ -7,3 +7,7 @@ resource "aws_acm_certificate" "demo_cert" {
     Name = "${var.acm_name}"
   })
 }
+
+resource "aws_acm_certificate_validation" "cert_validation" {
+  certificate_arn = aws_acm_certificate.demo_cert.arn
+}
