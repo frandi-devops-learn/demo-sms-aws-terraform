@@ -1,8 +1,8 @@
 resource "aws_vpc" "vpc" {
-  cidr_block = var.cidr_block
-  instance_tenancy = "default"
+  cidr_block           = var.cidr_block
+  instance_tenancy     = "default"
   enable_dns_hostnames = var.dns_hostnames
-  enable_dns_support = var.dns_support
+  enable_dns_support   = var.dns_support
 
   tags = merge(local.common_tags, {
     Name = "${var.vpc_name}"
@@ -18,10 +18,10 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_subnet" "pub_subnets" {
-  vpc_id = aws_vpc.vpc.id
-  count = length(var.vpc_pub_subnets)
-  cidr_block = var.vpc_pub_subnets[count.index]
-  availability_zone = var.azs[count.index]
+  vpc_id                  = aws_vpc.vpc.id
+  count                   = length(var.vpc_pub_subnets)
+  cidr_block              = var.vpc_pub_subnets[count.index]
+  availability_zone       = var.azs[count.index]
   map_public_ip_on_launch = var.map_public
 
   tags = merge(local.common_tags, {
@@ -30,9 +30,9 @@ resource "aws_subnet" "pub_subnets" {
 }
 
 resource "aws_subnet" "priv_subnets" {
-  vpc_id = aws_vpc.vpc.id
-  count = length(var.vpc_priv_subnets)
-  cidr_block = var.vpc_priv_subnets[count.index]
+  vpc_id            = aws_vpc.vpc.id
+  count             = length(var.vpc_priv_subnets)
+  cidr_block        = var.vpc_priv_subnets[count.index]
   availability_zone = var.azs[count.index]
 
   tags = merge(local.common_tags, {
@@ -54,9 +54,9 @@ resource "aws_route_table" "pub_rtb" {
 }
 
 resource "aws_route_table_association" "pub_route_associate" {
-    count = length(aws_subnet.pub_subnets)
-    subnet_id = aws_subnet.pub_subnets[count.index].id
-    route_table_id = aws_route_table.pub_rtb.id
+  count          = length(aws_subnet.pub_subnets)
+  subnet_id      = aws_subnet.pub_subnets[count.index].id
+  route_table_id = aws_route_table.pub_rtb.id
 }
 
 resource "aws_route_table" "priv_rtb" {
@@ -68,7 +68,7 @@ resource "aws_route_table" "priv_rtb" {
 }
 
 resource "aws_route_table_association" "priv_route_associate" {
-  count = length(aws_subnet.priv_subnets)
-  subnet_id = aws_subnet.priv_subnets[count.index].id
+  count          = length(aws_subnet.priv_subnets)
+  subnet_id      = aws_subnet.priv_subnets[count.index].id
   route_table_id = aws_route_table.priv_rtb.id
 }

@@ -23,3 +23,9 @@ igw_name = "demo-sms-igw"
 rtb_cidr = "0.0.0.0/0"
 
 rtb_name = "demo-sms"
+
+rds_sg = "demo-sms-rds-sg"
+
+backend_ecs_sg = "demo-sms-bk-sg"
+
+alb_sg = "demo-alb-sg"
