@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - staging
+      - main
   pull_request:
     branches:
       - main
@@ -11,7 +12,6 @@ on:
 permissions:
   id-token: write
   contents: read
-  pull-requests: write
 
 jobs:
   Terraform_Deployment:
@@ -41,8 +41,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan 
-        continue-on-error: true
 
       - name: Terraform Apply
-        if: github.event_name == 'pull_request' && github.ref == 'refs/head/main'
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
