@@ -13,3 +13,14 @@ output "private_subnet_id" {
 output "demo_sms_backend_ecs_sg" {
   value = aws_security_group.backend_ecs_sg.name_prefix
 }
+
+output "acm_dns_validation_records" {
+  description = "The DNS records (CNAME) required to validate the ACM certificate."
+  value = {
+    for dvo in aws_acm_certificate.demo_cert.domain_validation_options : dvo.domain_name => {
+      cname_name  = dvo.resource_record_name
+      cname_value = dvo.resource_record_value
+      cname_type  = dvo.resource_record_type
+    }
+  }
+}

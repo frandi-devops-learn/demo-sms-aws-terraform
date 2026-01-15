@@ -29,3 +29,7 @@ rds_sg = "demo-sms-rds-sg"
 backend_ecs_sg = "demo-sms-bk-sg"
 
 alb_sg = "demo-sms-alb-sg"
+
+domain_name = "frandisharing.com"
+
+acm_name = "demo-sms-acm"

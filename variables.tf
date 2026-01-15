@@ -77,3 +77,13 @@ variable "alb_sg" {
   type        = string
   description = "ALB Name"
 }
+
+variable "domain_name" {
+  type        = string
+  description = "Domain Name for ACM"
+}
+
+variable "acm_name" {
+  type        = string
+  description = "ACM Name"
+}
