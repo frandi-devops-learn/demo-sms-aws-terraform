@@ -3,11 +3,15 @@ name: AWS Infra Provision with Terraform
 on:
   push:
     branches:
+      - staging
+  pull_request:
+    branches:
       - main
 
 permissions:
   id-token: write
   contents: read
+  pull-requests: write
 
 jobs:
   Terraform_Deployment:
@@ -27,7 +31,7 @@ jobs:
 
       - name: Terraform Format
         run: terraform fmt -check
-        
+
       - name: Terraform Init
         run: terraform init
 
@@ -35,7 +39,10 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        id: plan
+        run: terraform plan 
+        continue-on-error: true
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        if: github.event_name == 'push' && github.ref == 'refs/head/main'
+        run: terraform apply -auto-approve
