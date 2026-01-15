@@ -32,7 +32,7 @@ alb_sg = "demo-sms-alb-sg"
 
 domain_name = "frandisharing.com"
 
-acm_name = "demo-sms-acm"
+acm_name = "sms-acm"
 
 alb_name = "demo-sms-alb"
 
