@@ -28,4 +28,4 @@ rds_sg = "demo-sms-rds-sg"
 
 backend_ecs_sg = "demo-sms-bk-sg"
 
-alb_sg = "demo-alb-sg"
+alb_sg = "demo-sms-alb-sg"

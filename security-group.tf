@@ -8,6 +8,7 @@ resource "aws_security_group" "alb_sg" {
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow HTTPS Connection to ALB"
   }
 
   egress {
@@ -32,6 +33,7 @@ resource "aws_security_group" "backend_ecs_sg" {
     to_port         = 3000
     protocol        = "tcp"
     security_groups = [aws_security_group.alb_sg.id]
+    description     = "Allow Backend ECS Connection from ALB"
   }
 
   egress {
@@ -57,6 +59,7 @@ resource "aws_security_group" "rds_sg" {
     to_port         = 5432
     protocol        = "tcp"
     security_groups = [aws_security_group.backend_ecs_sg.id]
+    description     = "Allow RDS Connection from Backend ECS"
   }
 
   egress {

@@ -11,5 +11,5 @@ output "private_subnet_id" {
 }
 
 output "demo_sms_backend_ecs_sg" {
-  value = aws_security_group.backend_ecs_sg.id
+  value = aws_security_group.backend_ecs_sg.name_prefix
 }
