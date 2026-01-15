@@ -44,5 +44,5 @@ jobs:
         continue-on-error: true
 
       - name: Terraform Apply
-        if: github.event_name == 'push' && github.ref == 'refs/head/main'
+        if: github.event_name == 'pull_request' && github.ref == 'refs/head/main'
         run: terraform apply -auto-approve
