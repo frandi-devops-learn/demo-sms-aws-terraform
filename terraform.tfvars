@@ -56,7 +56,7 @@ encrypt = true
 
 storage_type = "gp3"
 
-storage = "5"
+storage = "20"
 
 multi = false
 
@@ -68,4 +68,4 @@ final = false
 
 apply = true
 
-max = "20"
+max = "50"
