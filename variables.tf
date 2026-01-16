@@ -97,3 +97,88 @@ variable "tg_name" {
   type        = string
   description = "ALB's target Group Name"
 }
+
+variable "rds_priv" {
+  type        = string
+  description = "Private subnet for RDS"
+}
+
+variable "rds_name" {
+  type        = string
+  description = "RDS Name"
+}
+
+variable "db_name" {
+  type        = string
+  description = "DB Name"
+}
+
+variable "engine" {
+  type        = string
+  description = "RDS Engine"
+}
+
+variable "engine_version" {
+  type        = string
+  description = "RDS Engine Version"
+}
+
+variable "db_class" {
+  type        = string
+  description = "RDS Class"
+}
+
+variable "user" {
+  type        = string
+  description = "RDS User Name"
+}
+
+variable "password" {
+  type        = string
+  description = "RDS Password"
+}
+
+variable "encrypt" {
+  type        = bool
+  description = "Storage Encrypt for RDS"
+}
+
+variable "storage_type" {
+  type        = string
+  description = "Storage Type for RDS"
+}
+
+variable "storage" {
+  type        = string
+  description = "Total Storage size for RDS"
+}
+
+variable "multi" {
+  type        = string
+  description = "Multi AZs for RDS"
+}
+
+variable "public" {
+  type        = string
+  description = "Public Access for RDS"
+}
+
+variable "skip" {
+  type        = string
+  description = "Skip Snapshot for RDS"
+}
+
+variable "final" {
+  type        = string
+  description = "Final Snapshot for RDS"
+}
+
+variable "apply" {
+  type        = string
+  description = "Apply immediately for RDS"
+}
+
+variable "max" {
+  type        = string
+  description = "Max Storage for RDS"
+}
