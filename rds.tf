@@ -12,39 +12,53 @@ resource "aws_db_parameter_group" "rds_prameter" {
   family      = "postgres18"
   description = "Performance tuned parameters for PostgreSQL 18"
 
+  # STATIC: Requires Reboot
   parameter {
-    name  = "shared_buffers"
-    value = "{DBInstanceClassMemory/32768}"
+    name         = "shared_buffers"
+    value        = "{DBInstanceClassMemory/32768}"
+    apply_method = "pending-reboot" 
   }
 
+  # STATIC: Requires Reboot
   parameter {
-    name  = "work_mem"
-    value = "4096"
+    name         = "max_connections"
+    value        = "100"
+    apply_method = "pending-reboot"
   }
 
+  # DYNAMIC: Can be applied immediately
   parameter {
-    name  = "effective_io_concurrency"
-    value = "32"
+    name         = "work_mem"
+    value        = "4096"
+    apply_method = "immediate"
   }
 
+  # DYNAMIC: Can be applied immediately
   parameter {
-    name  = "max_connections"
-    value = "100"
+    name         = "effective_io_concurrency"
+    value        = "32"
+    apply_method = "immediate"
   }
 
+  # DYNAMIC: Can be applied immediately
   parameter {
-    name  = "autovacuum_vacuum_scale_factor"
-    value = "0.05"
+    name         = "autovacuum_vacuum_scale_factor"
+    value        = "0.05"
+    apply_method = "immediate"
   }
 
+  # DYNAMIC: Can be applied immediately
   parameter {
-    name  = "autovacuum_vacuum_cost_limit"
-    value = "200"
+    name         = "autovacuum_vacuum_cost_limit"
+    value        = "200"
+    apply_method = "immediate"
   }
 
+  # DYNAMIC: Can be applied immediately
   parameter {
-    name  = "log_min_duration_statement"
-    value = "2000"
+    name         = "log_min_duration_statement"
+    value        = "2000"
+    apply_method = "immediate"
   }
 
   lifecycle {
