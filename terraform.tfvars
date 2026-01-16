@@ -37,3 +37,35 @@ acm_name = "sms-acm"
 alb_name = "demo-sms-alb"
 
 tg_name = "demo-sms-bk-tg"
+
+rds_priv = "demo-sms-rds-subnet"
+
+db_name = "uatdb"
+
+rds_name = "demo-sms-rds"
+
+engine = "postgresql"
+
+engine_version = "18.1"
+
+db_class = "db.t4g.micro"
+
+user = "dbadmin"
+
+encrypt = true
+
+storage_type = "gp3"
+
+storage = "5"
+
+multi = false
+
+public = false
+
+skip = true
+
+final = false
+
+apply = true
+
+max = "20"
