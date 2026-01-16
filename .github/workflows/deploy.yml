@@ -32,6 +32,8 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan -no-color
+        env:
+          TF_VAR_password: ${{ secrets.DB_PASSWORD }}
 
   apply:
     name: "Terraform Apply"
@@ -58,3 +60,5 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        env:
+          TF_VAR_password: ${{ secrets.DB_PASSWORD }}

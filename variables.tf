@@ -136,6 +136,7 @@ variable "user" {
 variable "password" {
   type        = string
   description = "RDS Password"
+  sensitive   = true
 }
 
 variable "encrypt" {

@@ -52,8 +52,6 @@ db_class = "db.t4g.micro"
 
 user = "dbadmin"
 
-password = "DBadmin123"
-
 encrypt = true
 
 storage_type = "gp3"
