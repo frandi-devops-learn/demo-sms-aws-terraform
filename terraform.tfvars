@@ -44,7 +44,7 @@ db_name = "uatdb"
 
 rds_name = "demo-sms-rds"
 
-engine = "postgresql"
+engine = "postgres"
 
 engine_version = "18.1"
 
