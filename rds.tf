@@ -78,7 +78,7 @@ resource "aws_db_instance" "rds" {
   publicly_accessible       = var.public
   skip_final_snapshot       = var.skip
   final_snapshot_identifier = var.final
-#   apply_immediately         = var.apply
+  apply_immediately         = var.apply
 
   tags = merge(local.common_tags, {
     Name = "${var.rds_name}"

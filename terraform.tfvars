@@ -68,4 +68,6 @@ skip = true
 
 final = false
 
+apply = true
+
 max = "20"
