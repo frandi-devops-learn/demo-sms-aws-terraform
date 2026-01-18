@@ -16,7 +16,7 @@ resource "aws_db_parameter_group" "rds_prameter" {
   parameter {
     name         = "shared_buffers"
     value        = "{DBInstanceClassMemory/32768}"
-    apply_method = "pending-reboot" 
+    apply_method = "pending-reboot"
   }
 
   # STATIC: Requires Reboot
@@ -78,7 +78,7 @@ resource "aws_db_instance" "rds" {
   instance_class = var.db_class
 
   username = var.user
-  password = var.password
+  password = aws_secretsmanager_secret_version.db_pass_val.secret_string
 
   storage_encrypted     = var.encrypt
   storage_type          = var.storage_type

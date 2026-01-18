@@ -34,3 +34,7 @@ output "alb_dns_name" {
   description = "The public DNS name of the Load Balancer"
   value       = aws_lb.demo_alb.dns_name
 }
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.demo_ecr.repository_url
+}
