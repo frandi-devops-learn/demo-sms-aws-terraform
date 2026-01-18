@@ -30,6 +30,8 @@ backend_ecs_sg = "demo-sms-bk-sg"
 
 alb_sg = "demo-sms-alb-sg"
 
+endpoint_sg = "demo-sms-endpoint-sg"
+
 domain_name = "frandisharing.com"
 
 acm_name = "sms-acm"
@@ -46,7 +48,7 @@ rds_name = "demo-sms-rds"
 
 engine = "postgres"
 
-engine_version = "18.1"
+engine_version = "16.11"
 
 db_class = "db.t4g.micro"
 
@@ -69,3 +71,17 @@ final = false
 apply = true
 
 max = "50"
+
+ecr_name = "demo-sms-bk"
+
+image = "MUTABLE"
+
+scan = true
+
+encrypt_type = "AES256"
+
+endpoint_type_1 = "Interface"
+
+dns_enable = true
+
+endpoint_type_2 = "Gateway"

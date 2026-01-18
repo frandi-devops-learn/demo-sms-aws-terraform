@@ -78,6 +78,11 @@ variable "alb_sg" {
   description = "ALB Name"
 }
 
+variable "endpoint_sg" {
+  type        = string
+  description = "Endpoint Name"
+}
+
 variable "domain_name" {
   type        = string
   description = "Domain Name for ACM"
@@ -133,12 +138,6 @@ variable "user" {
   description = "RDS User Name"
 }
 
-variable "password" {
-  type        = string
-  description = "RDS Password"
-  sensitive   = true
-}
-
 variable "encrypt" {
   type        = bool
   description = "Storage Encrypt for RDS"
@@ -182,4 +181,39 @@ variable "apply" {
 variable "max" {
   type        = string
   description = "Max Storage for RDS"
+}
+
+variable "ecr_name" {
+  type        = string
+  description = "ECR Name"
+}
+
+variable "image" {
+  type        = string
+  description = "Mutability for EC"
+}
+
+variable "scan" {
+  type        = bool
+  description = "Scan on push docker image"
+}
+
+variable "encrypt_type" {
+  type        = string
+  description = "Encryption for ECR"
+}
+
+variable "endpoint_type_1" {
+  type        = string
+  description = "Endpoint type for VPC"
+}
+
+variable "dns_enable" {
+  type        = bool
+  description = "Private DNS enable for ECR"
+}
+
+variable "endpoint_type_2" {
+  type        = string
+  description = "Endpoint type for VPC"
 }

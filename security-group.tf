@@ -73,3 +73,28 @@ resource "aws_security_group" "rds_sg" {
     Name = "${var.rds_sg}"
   })
 }
+
+resource "aws_security_group" "vpc_endpoint_sg" {
+  vpc_id      = aws_vpc.vpc.id
+  name        = var.endpoint_sg
+  description = "Allow ECS tasks to reach VPC Endpoints"
+
+  ingress {
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    security_groups = [aws_security_group.backend_ecs_sg.id]
+    description     = "Allow HTTPS from Backend ECS"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = merge(local.common_tags, {
+    Name = "${var.endpoint_sg}"
+  })
+}
