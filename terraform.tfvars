@@ -48,7 +48,7 @@ rds_name = "demo-sms-rds"
 
 engine = "postgres"
 
-engine_version = "18.1"
+engine_version = "16.11"
 
 db_class = "db.t4g.micro"
 
