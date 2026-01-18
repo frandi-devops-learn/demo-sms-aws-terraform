@@ -78,8 +78,8 @@ resource "aws_db_instance" "rds" {
   instance_class = var.db_class
 
   username = var.user
-  password = aws_secretsmanager_secret_version.db_pass_val.secret_string
-
+  password = var.db_password
+  
   storage_encrypted     = var.encrypt
   storage_type          = var.storage_type
   allocated_storage     = var.storage

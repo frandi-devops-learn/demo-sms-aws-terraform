@@ -14,5 +14,5 @@ resource "aws_secretsmanager_secret" "db_pass" {
 
 resource "aws_secretsmanager_secret_version" "db_pass_val" {
   secret_id     = aws_secretsmanager_secret.db_pass.id
-  secret_string = var.DB_PASSWORD
+  secret_string = var.db_password
 }
