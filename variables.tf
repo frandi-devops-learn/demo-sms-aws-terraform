@@ -138,7 +138,7 @@ variable "user" {
   description = "RDS User Name"
 }
 
-variable "password" {
+variable "db_password" {
   type        = string
   description = "RDS Password"
   sensitive   = true
