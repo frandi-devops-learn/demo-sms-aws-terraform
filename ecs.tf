@@ -43,7 +43,6 @@ resource "aws_ecs_task_definition" "backend" {
       ]
 
       environment = [
-        { name = "DATABASE_URL", value = "postgresql://dummy:dummy@localhost:5432/dummy" },
         { name = "DB_HOST", value = aws_db_instance.rds.address },
         { name = "DB_NAME", value = var.db_name },
         { name = "DB_PORT", value = "5432" },
