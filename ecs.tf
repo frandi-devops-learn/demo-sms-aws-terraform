@@ -42,11 +42,10 @@ resource "aws_ecs_task_definition" "backend" {
         }
       ]
 
-      environment = [
-        { name  = "DATABASE_URL",
-          value = "postgresql://${var.user}:${aws_db_instance.rds.master_user_secret[0].secret_arn}:password::@${aws_db_instance.rds.address}:5432/${var.db_name}?sslmode=no-verify"
-        },
+      environment = 
         { name = "DB_HOST", value = aws_db_instance.rds.address },
+        { name = "DB_NAME", value = var.db_name },
+        { name = "DB_PORT", value = "5432" },
         { name = "S3_BUCKET", value = "demo-sms-internal-storage" },
       ]
 
