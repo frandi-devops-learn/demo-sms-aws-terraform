@@ -68,6 +68,8 @@ resource "aws_ecs_service" "backend_service" {
   desired_count   = 2 # High availability
   launch_type     = "FARGATE"
 
+  enable_execute_command = true
+
   network_configuration {
     subnets          = aws_subnet.priv_subnets[*].id
     security_groups  = [aws_security_group.backend_ecs_sg.id]
