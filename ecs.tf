@@ -20,7 +20,7 @@ resource "aws_ecs_task_definition" "backend" {
 
   container_definitions = jsonencode([
     {
-      name      = "backend-api"
+      name      = "demo-sms-bk-api"
       image     = "${aws_ecr_repository.demo_ecr.repository_url}:latest"
       essential = true
 
