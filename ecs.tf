@@ -21,9 +21,9 @@ resource "aws_ecs_task_definition" "backend" {
   container_definitions = jsonencode([
     {
       name      = "backend-api"
-      image     = "${aws_ecr_repository.demo_repo.repository_url}:latest"
+      image     = "${aws_ecr_repository.demo_ecr.repository_url}:latest"
       essential = true
-      
+
       portMappings = [{
         containerPort = 3000
         hostPort      = 3000
@@ -43,8 +43,8 @@ resource "aws_ecs_task_definition" "backend" {
       ]
 
       environment = [
-        { name = "DATABASE_URL",
-          value = "postgresql://${var.user}:${aws_db_instance.rds.master_user_secret[0].secret_arn}:password::@${aws_db_instance.rds.endpoint}/${var.db_name}" 
+        { name  = "DATABASE_URL",
+          value = "postgresql://${var.user}:${aws_db_instance.rds.master_user_secret[0].secret_arn}:password::@${aws_db_instance.rds.endpoint}/${var.db_name}"
         },
         { name = "DB_HOST", value = aws_db_instance.rds.address },
         { name = "S3_BUCKET", value = "demo-sms-internal-storage" },
@@ -76,7 +76,7 @@ resource "aws_ecs_service" "backend_service" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.api_tg.arn
+    target_group_arn = aws_lb_target_group.ecs_tg.arn
     container_name   = "demo-sms-bk-api"
     container_port   = 3000
   }
